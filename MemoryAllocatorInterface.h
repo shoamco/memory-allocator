@@ -8,9 +8,15 @@
 
 #include <assert.h>
 #include <stdlib.h>
+
+#define  PlatformAlignmentWidth 8
+#define LSB 1
 typedef struct MemoryAllocator MemoryAllocator;
 typedef struct Block Block;
+/**
+          Memory allocation service
 
+ * */
 
 
 /**Block in memory pool  */
@@ -21,10 +27,11 @@ struct Block {
 };
 /**MemoryAllocator  */
 struct MemoryAllocator {
-    void* memoryPool;
+    size_t *memoryPool;
     size_t size_memoryPool;
-    Block **blocks; /*array of block*/
     size_t number_of_blocks;
+/*    Block **blocks;
+   */
 
 };
 

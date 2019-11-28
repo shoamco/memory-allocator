@@ -12,20 +12,9 @@ MemoryAllocator* MemoryAllocator_init(void* memoryPool,size_t size){
         memory_allocator->size_memoryPool = size;
 
         /*allocate one block that Representing the  all memoryPool, that is initially freed */
-        memory_allocator->blocks =  (Block*) malloc( sizeof(Block*));
-        memory_allocator->number_of_blocks=1;
-        Block* block=malloc(sizeof(Block));
-        assert(block);
-        if (block) {
-            memory_allocator->blocks[0] =block;
-
-            printf("*** initialize Memory Allocator ***\n");
-        }
-        else{
-            free(memory_allocator);/*if allocation fall -free memory_allocator */
-            memory_allocator = NULL;/*return null for the user*/
-        }
-
+        memory_allocator->number_of_blocks = 1;
+        size_t metadata = size << 1;
+        memory_allocator->memoryPool[0] = metadata;
     }
     return memory_allocator;
 
@@ -33,18 +22,19 @@ MemoryAllocator* MemoryAllocator_init(void* memoryPool,size_t size){
 
 void* MemoryAllocator_allocate(MemoryAllocator* allocator,size_t size){
     /**allocate a new block in the memory Pool*/
-
-    Block* block=malloc(sizeof(Block));
-    assert(block);
-    if (block) {
-        /*create a new block and add it into the memoryPool */
-//        block->metadata = memoryPool;
-        block->size_block = size;
-        allocator->number_of_blocks+=1;
-        allocator->blocks=realloc( allocator->blocks, allocator->number_of_blocks);
+    size_t block=PlatformAlignmentWidth;
+    while((block<allocator->size_memoryPool) && !(PlatformAlignmentWidth & LSB) ){
+        block+=allocator->memoryPool[PlatformAlignmentWidth>>1]+PlatformAlignmentWidth;
 
 
-        printf("*** initialize Memory Allocator ***\n");
+    }
+    /*If  no free block (reached the end of the memory pool), return NULL.*/
+    if(block<allocator->size_memoryPool){
+        return  NULL;
+    }
+    else/*allocate a nre block*/
+    {
+
     }
 
 }
