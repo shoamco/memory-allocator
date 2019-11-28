@@ -1,6 +1,8 @@
-//
-// Created by shoam on 11/28/19.
-//
+
+/*
+  gcc Main.c MemoryAllocator.h MemoryAllocator.c  -lgtest -lgtest_main -pthread -o test
+
+ */
 #include "MemoryAllocator.h"
 int main(){
     return 0;

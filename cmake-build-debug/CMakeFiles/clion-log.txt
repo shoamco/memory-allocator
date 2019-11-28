@@ -1,0 +1,14 @@
+/opt/clion-2019.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/shoam/Desktop/course/memory-memory-allocator-shoamco
+-- The C compiler identification is GNU 7.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done
+CMake Error: Cannot determine link language for target "memory_memory_allocator_shoamco".
+CMake Error: CMake can not determine linker language for target: memory_memory_allocator_shoamco
+-- Generating done
+-- Build files have been written to: /home/shoam/Desktop/course/memory-memory-allocator-shoamco/cmake-build-debug
+Unable to determine product file path for target memory_memory_allocator_shoamco. Running and debugging will be unavailable.
