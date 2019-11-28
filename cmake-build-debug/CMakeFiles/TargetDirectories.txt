@@ -1,3 +1,0 @@
-/home/shoam/Desktop/course/memory-memory-allocator-shoamco/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/shoam/Desktop/course/memory-memory-allocator-shoamco/cmake-build-debug/CMakeFiles/memory_memory_allocator_shoamco.dir
-/home/shoam/Desktop/course/memory-memory-allocator-shoamco/cmake-build-debug/CMakeFiles/edit_cache.dir
