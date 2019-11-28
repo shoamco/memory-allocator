@@ -1,5 +1,7 @@
 
 /*
+ * git add .gitignore
+
   gcc Main.c MemoryAllocator.h MemoryAllocator.c  -lgtest -lgtest_main -pthread -o test
 
  */
