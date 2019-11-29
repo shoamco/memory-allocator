@@ -16,8 +16,10 @@ void test_MemoryAllocator_allocate(){
     printf("new memory_allocator:\n\n ");
     Print_MemoryAllocator(memory_allocator);
 
+
     MemoryAllocator_allocate(memory_allocator,block_size);
     printf("after add block size %ld:\n\n ",block_size);
     Print_MemoryAllocator(memory_allocator);
+    block_size=47;
 
 }
