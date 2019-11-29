@@ -21,7 +21,7 @@ typedef struct Block Block;
 
 /**Block in memory pool  */
 struct Block {
-    /*metadata contain the size of the block+ bit for free/occupied (LSB = metadata & 1)*/
+    /*metadata contain the size of the block+ bit for free/occupied(0/1) (LSB = metadata & 1)*/
     size_t metadata;
     size_t size_block;
 };
@@ -46,6 +46,7 @@ void* MemoryAllocator_release(MemoryAllocator* allocator);
 /* Merge the next adjacent block is free */
 void MemoryAllocator_free(MemoryAllocator* allocator, void*ptr);
 
+/**Allocate a new block in memoryPool*/
 void* MemoryAllocator_allocate(MemoryAllocator* allocator,size_t size);
 /* Merges all adjacent free blocks, and returns the size of largest free block */
 
