@@ -54,7 +54,7 @@ void *MemoryAllocator_allocate(MemoryAllocator *allocator, size_t size) {
 
 }
 
-void print_memoryPool(MemoryAllocator *allocator) {
+void Print_MemoryAllocator(MemoryAllocator *allocator) {
     size_t index = 0;/*size of the first block(metadata)*/
     size_t metadata;
     size_t size_of_block;
