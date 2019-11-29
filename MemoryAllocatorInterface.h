@@ -51,4 +51,6 @@ void* MemoryAllocator_allocate(MemoryAllocator* allocator,size_t size);
 
 size_t MemoryAllocator_optimize(MemoryAllocator* allocator);
 
+
+void print_memoryPool(MemoryAllocator* allocator);
 #endif /*MEMORY_MEMORY_ALLOCATOR_SHOAMCO_MEMORYALLOCATOR_H*/
