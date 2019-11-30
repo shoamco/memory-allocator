@@ -5,7 +5,15 @@
   gcc Main.c MemoryAllocator.h MemoryAllocator.c  -lgtest -lgtest_main -pthread -o test
 
  */
-#include "MemoryAllocator.h"
-int main(){
+#include "MemoryAllocatorInterface.h"
+#include "TestMemoryAllocator.h"
+
+int main() {
+
+    /*test_MemoryAllocator_init();*/
+   /* test_MemoryAllocator_allocate();*/
+   /* test_MemoryAllocator_allocate();*/
+   test_MemoryAllocator_free();
+
     return 0;
 }

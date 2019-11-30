@@ -7,4 +7,5 @@
 
 void test_MemoryAllocator_init();
 void test_MemoryAllocator_allocate();
+void test_MemoryAllocator_free();
 #endif /*MEMORY_MEMORY_ALLOCATOR_SHOAMCO_TESTMEMORYALLOCATOR_H*/
