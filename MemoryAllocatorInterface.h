@@ -16,19 +16,11 @@ typedef struct Block Block;
  * */
 
 
-/**Block in memory pool  */
-struct Block {
-    /*metadata contain the size of the block+ bit for free/occupied(0/1) (LSB = metadata & 1)*/
-    size_t metadata;
-    size_t size_block;
-};
 /**MemoryAllocator  */
 struct MemoryAllocator {
     size_t *memoryPool;
     size_t size_memoryPool;
-    size_t number_of_blocks;
-/*    Block **blocks;
-   */
+
 
 };
 
