@@ -1,5 +1,3 @@
-
-
 #include "MemoryAllocatorInterface.h"
 
 
@@ -25,9 +23,11 @@ void *MemoryAllocator_allocate(MemoryAllocator *allocator, size_t size) {
     /**allocate a new block in the memory Pool*/
     size_t index = 0;/*size of the first block(metadata)*/
     size_t size_of_block;
-/*todo:cheak size/PlatformAlignmentWidth*/
-    /*printf("size %ld,ceil  %f\n",size,ceil(((double)size)/PlatformAlignmentWidth));
-size=ceil((size/PlatformAlignmentWidth))*PlatformAlignmentWidth;*/
+
+if(size%PlatformAlignmentWidth)/*todo:ceil dont work in c90?*/
+    size=(size/PlatformAlignmentWidth+1)*PlatformAlignmentWidth;
+
+/*size=ceil((size/PlatformAlignmentWidth))*PlatformAlignmentWidth;*/
     printf("new  size %ld\n",size);
     /* while  reached the end of the memory pool and the blook is not free */
     while ((index < allocator->size_memoryPool) && (allocator->memoryPool[index] & LSB)) {
@@ -47,7 +47,7 @@ size=ceil((size/PlatformAlignmentWidth))*PlatformAlignmentWidth;*/
         size_t last_size = (allocator->memoryPool[index])>>1;
 
         /*Insert the data into the free block*/
-      /*  size_t *new_block= malloc(size+PlatformAlignmentWidth);*/
+        /*  size_t *new_block= malloc(size+PlatformAlignmentWidth);*/
         size_t metadata = size << 1;/*enter the size of the new block to the metadata*/
         metadata |= 1;/*Mark that the  block is occupied*/
         /* *new_block=metadata;*/

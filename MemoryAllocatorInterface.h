@@ -1,5 +1,3 @@
-
-
 #ifndef MEMORY_MEMORY_ALLOCATOR_SHOAMCO_MEMORYALLOCATOR_H
 #define MEMORY_MEMORY_ALLOCATOR_SHOAMCO_MEMORYALLOCATOR_H
 #include <stdio.h>
@@ -15,7 +13,6 @@ typedef struct MemoryAllocator MemoryAllocator;
 typedef struct Block Block;
 /**
           Memory allocation service
-
  * */
 
 
