@@ -29,8 +29,8 @@ struct MemoryAllocator {
 MemoryAllocator* MemoryAllocator_init(void* memoryPool,size_t size);
 
 
-/* Returns a ptr to the memoryPool */
-/** release-free memoryPool and all blocks inside*/
+
+
 /** release allocator*/
 void* MemoryAllocator_release(MemoryAllocator* allocator);
 
@@ -45,5 +45,6 @@ void* MemoryAllocator_allocate(MemoryAllocator* allocator,size_t size);
 size_t MemoryAllocator_optimize(MemoryAllocator* allocator);
 
 
+/** get a pointer to MemoryAllocator and print the memory Pool ,print all block metadata**/
 void Print_MemoryAllocator(MemoryAllocator* allocator);
 #endif /*MEMORY_MEMORY_ALLOCATOR_SHOAMCO_MEMORYALLOCATOR_H*/
