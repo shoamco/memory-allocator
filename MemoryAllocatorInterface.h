@@ -40,8 +40,8 @@ void MemoryAllocator_free(MemoryAllocator* allocator, void*ptr);
 
 /**Allocate a new block in memoryPool*/
 void* MemoryAllocator_allocate(MemoryAllocator* allocator,size_t size);
-/* Merges all adjacent free blocks, and returns the size of largest free block */
 
+/**optimize-Merges all available blocks (adjacent to each other) and returns the size of the largest block*/
 size_t MemoryAllocator_optimize(MemoryAllocator* allocator);
 
 
