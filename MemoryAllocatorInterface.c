@@ -25,16 +25,20 @@ void *MemoryAllocator_allocate(MemoryAllocator *allocator, size_t size) {
     /**allocate a new block in the memory Pool*/
     size_t index = 0;/*size of the first block(metadata)*/
     size_t size_of_block;
+/*todo:cheak size/PlatformAlignmentWidth*/
+    /*printf("size %ld,ceil  %f\n",size,ceil(((double)size)/PlatformAlignmentWidth));
+size=ceil((size/PlatformAlignmentWidth))*PlatformAlignmentWidth;*/
+    printf("new  size %ld\n",size);
     /* while  reached the end of the memory pool and the blook is not free */
     while ((index < allocator->size_memoryPool) && (allocator->memoryPool[index] & LSB)) {
         size_of_block = (allocator->memoryPool[index]) >> 1;
-        printf("index: %d \n", index);
+        printf("index: %ld \n", index);
 
         index += PlatformAlignmentWidth + size_of_block;/*next block index*/
 
 
     }
-    printf("index: %d \n", index);
+    printf("index: %ld \n", index);
     /*If  no free block (reached the end of the memory pool), return NULL.*/
     if (index >= allocator->size_memoryPool) {
         return NULL;
@@ -43,8 +47,10 @@ void *MemoryAllocator_allocate(MemoryAllocator *allocator, size_t size) {
         size_t last_size = (allocator->memoryPool[index])>>1;
 
         /*Insert the data into the free block*/
+      /*  size_t *new_block= malloc(size+PlatformAlignmentWidth);*/
         size_t metadata = size << 1;/*enter the size of the new block to the metadata*/
         metadata |= 1;/*Mark that the  block is occupied*/
+        /* *new_block=metadata;*/
         allocator->memoryPool[index] = metadata;
 
         /*Insert the last block that marks the size that remains free*/
@@ -63,7 +69,19 @@ void *MemoryAllocator_allocate(MemoryAllocator *allocator, size_t size) {
     return allocator->memoryPool;
 
 }
+void MemoryAllocator_free(MemoryAllocator* allocator, void*ptr){
+    /** free block,if next adjacent block is free Merge them together*/
 
+
+}
+void* MemoryAllocator_release(MemoryAllocator* allocator){
+    /** release allocator*/
+    free(allocator->memoryPool);/*free the memoryPool*/
+    free(allocator);/*free allocator*/
+    printf(" \n\n    **** release allocator****     \n\n\n");
+    return NULL;
+
+}
 void Print_MemoryAllocator(MemoryAllocator *allocator) {
     size_t index = 0;/*size of the first block(metadata)*/
     size_t metadata;
@@ -75,7 +93,7 @@ void Print_MemoryAllocator(MemoryAllocator *allocator) {
         metadata = allocator->memoryPool[index];
         size_of_block = metadata >> 1;
         occupied = metadata & LSB;
-        printf("size block: %d,occupied: %d \n", size_of_block, occupied);
+        printf("size block: %ld,occupied: %ld \n", size_of_block, occupied);
 
         index += PlatformAlignmentWidth + size_of_block;/*next block index*/
 

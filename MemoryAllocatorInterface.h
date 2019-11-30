@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdint.h>
-
+#include <math.h>
 #include <assert.h>
 #include <stdlib.h>
 
@@ -41,9 +41,12 @@ MemoryAllocator* MemoryAllocator_init(void* memoryPool,size_t size);
 
 
 /* Returns a ptr to the memoryPool */
+/** release-free memoryPool and all blocks inside*/
+/** release allocator*/
 void* MemoryAllocator_release(MemoryAllocator* allocator);
 
-/* Merge the next adjacent block is free */
+
+/** free block,if next adjacent block is free Merge them together*/
 void MemoryAllocator_free(MemoryAllocator* allocator, void*ptr);
 
 /**Allocate a new block in memoryPool*/
